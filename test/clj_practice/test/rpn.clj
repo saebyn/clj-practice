@@ -16,4 +16,4 @@
  (rpn-process ["19" "2.14" "+"]) => (just [(roughly 21.14)]))
 
 (fact
- (rpn-parse "19 2.14 + 4.5 2 4.3 / - *") => (just [(roughly 85.2974)]))
+ (rpn-parse "19 2.14 + 4.5 2 4.3 / - *" []) => (just [(roughly 85.2974)]))
