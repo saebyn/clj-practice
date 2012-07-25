@@ -82,9 +82,8 @@
 
 (defn generate-word [chain words]
   (let [nodes (get-in chain (take-last 2 words))]
-    (if nodes
-      (choose-word nodes)
-      nil)))
+    (when nodes
+      (choose-word nodes))))
 
 
 (defn generate-first-words [chain]

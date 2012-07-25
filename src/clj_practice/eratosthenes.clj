@@ -12,15 +12,15 @@
   (if (< current-number limit)
     (sieve-filter (if (aget number-array (- current-number 3))
                     (clear-multiples number-array current-number)
-                    number-array) (+ 1 current-number) limit)
+                    number-array) (inc current-number) limit)
     number-array))
 
 (defn map-back-to-numbers [^booleans number-array maximum]
-  (keep-indexed (fn [idx itm] (if (aget number-array idx) itm nil)) (range 3 (+ 1 maximum))))
+  (keep-indexed (fn [idx itm] (when (aget number-array idx) itm)) (range 3 (inc maximum))))
 
 (defn sieve [maximum]
   (cons 2 (map-back-to-numbers
            (sieve-filter
-            (boolean-array (map odd? (range 3 (+ maximum 1))))
+            (boolean-array (map odd? (range 3 (inc maximum))))
             3
-            (+ (Math/sqrt maximum) 1)) maximum)))
+            (inc (Math/sqrt maximum))) maximum)))
